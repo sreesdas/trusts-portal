@@ -1,0 +1,16 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+aside .nav-item a:hover {
+    background: #0d71c38a;
+}
+
+a.card-link:hover {
+    text-decoration: none;
+}
