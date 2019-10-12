@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('sidebar')
+    @include('partials.sidebar.common')
+@endsection
+
 @section('heading')
     TRUSTS PORTAL
 @endsection
@@ -30,8 +34,8 @@
                     <td> {{ $user->email }}</td>
                     <td>
                         <ul>
-                            @foreach ($user->trusts as $trust)
-                                <li> {{ $trust }} {{ $user->isAdmin($trust) ? '(admin)' : '' }} </li>
+                            @foreach ($user->roles as $role)
+                                <li> {{ $role }} </li>
                             @endforeach
                         </ul>
                     </td>

@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('sidebar')
+    @include('partials.sidebar.cpf')
+@endsection
+
 @section('heading')
     CPF PORTAL - ADMIN
 @endsection
@@ -28,7 +32,7 @@
                 @foreach ($agendas as $agenda)
                     <tr>
                         <td> <input type="checkbox" name="agendas[]" value="{{ $agenda->id }}" > </td>
-                        <td> {{ $agenda->uid }} </td>
+                        <td> <a href="/cpf/agenda/{{ $agenda->id }}"> {{ $agenda->uid }} </a> </td>
                         <td> {{ $agenda->subject }} </td>
                         <td> {{ $agenda->date }} </td>
                     </tr>

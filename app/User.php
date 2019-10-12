@@ -18,30 +18,31 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    // protected $casts = [
+    //     'trusts' => 'array',
+    //     'adminroles' => 'array',
+    // ];
     protected $casts = [
-        'trusts' => 'array',
-        'adminroles' => 'array',
+        'roles' => 'array',
     ];
 
     public function isTrustee($trust) {
         
-        if( $this->trusts ) {
-            if(in_array($trust, $this->trusts)) {
+        if( $this->roles ) {
+            if(in_array($trust . "-trustee", $this->roles)) {
                 return true;
             }
         }
-
         return false;
     }
 
     public function isAdmin($trust) {
 
-        if( $this->adminroles ) {
-            if(in_array($trust, $this->adminroles)) {
+        if( $this->roles ) {
+            if(in_array($trust . "-admin" , $this->roles)) {
                 return true;
             }
         }
-        
         return false;
     }
 }

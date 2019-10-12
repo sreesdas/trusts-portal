@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('sidebar')
+    @include('partials.sidebar.common')
+@endsection
+
 @section('heading')
     CPF PORTAL - ADMIN
 @endsection

@@ -1,7 +1,15 @@
 @extends('layouts.app')
 
+@section('sidebar')
+    @if(Auth::user()->isAdmin('cpf'))
+        @include('partials.sidebar.cpf')
+    @else 
+        @include('partials.sidebar.common')
+    @endif
+@endsection
+
 @section('heading')
-    CPF PORTAL - ADMIN
+    CPF PORTAL
 @endsection
 
 @section('content')

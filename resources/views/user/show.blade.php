@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('sidebar')
+    @include('partials.sidebar.common')
+@endsection
+
 @section('heading')
     TRUSTS PORTAL
 @endsection
@@ -35,11 +39,11 @@
                     @if( Auth::user()->isAdmin('cpf') )
                         <div class="col-xl-12">
                             <div class="form-group form-check form-check-inline">
-                                <input type="checkbox" class="form-check-input" id="cpftrust" value="cpf" name="trusts[]" @if($user->isTrustee('cpf')) checked @endif>
+                                <input type="checkbox" class="form-check-input" id="cpftrust" value="cpf-trustee" name="roles[]" @if($user->isTrustee('cpf')) checked @endif>
                                 <label class="form-check-label" for="cpftrust">CPF Trustee</label>
                             </div>
                             <div class="form-group form-check form-check-inline">
-                                <input type="checkbox" class="form-check-input" id="cpfadmin" value="cpf" name="adminroles[]" @if($user->isAdmin('cpf')) checked @endif>
+                                <input type="checkbox" class="form-check-input" id="cpfadmin" value="cpf-admin" name="roles[]" @if($user->isAdmin('cpf')) checked @endif>
                                 <label class="form-check-label" for="cpfadmin">CPF Admin</label>
                             </div>
                         </div>
@@ -47,11 +51,11 @@
                     @if( Auth::user()->isAdmin('csss') )
                         <div class="col-xl-12">
                             <div class="form-group form-check form-check-inline">
-                                <input type="checkbox" class="form-check-input" id="cssstrust" value="csss" name="trusts[]" @if($user->isTrustee('csss')) checked @endif>
+                                <input type="checkbox" class="form-check-input" id="cssstrust" value="csss-trustee" name="roles[]" @if($user->isTrustee('csss')) checked @endif>
                                 <label class="form-check-label" for="cssstrust">CSSS Trustee</label>
                             </div>
                             <div class="form-group form-check form-check-inline">
-                                <input type="checkbox" class="form-check-input" id="csssadmin" value="csss" name="adminroles[]" @if($user->isAdmin('csss')) checked @endif>
+                                <input type="checkbox" class="form-check-input" id="csssadmin" value="csss-admin" name="roles[]" @if($user->isAdmin('csss')) checked @endif>
                                 <label class="form-check-label" for="csssadmin">CSSS Admin</label>
                             </div>
                         </div>

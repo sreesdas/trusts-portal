@@ -20,8 +20,9 @@ class CreateUsersTable extends Migration
             $table->string('email');
             $table->string('designation')->nullable();
 
-            $table->string('trusts')->nullable();
-            $table->string('adminroles')->nullable();
+            $table->string('roles')->nullable();
+            // $table->string('trusts')->nullable();
+            // $table->string('adminroles')->nullable();
             
             $table->string('password');
             $table->rememberToken();

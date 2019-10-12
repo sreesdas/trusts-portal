@@ -39330,6 +39330,10 @@ var feather = __webpack_require__(/*! feather-icons */ "./node_modules/feather-i
 
 $(function () {
   feather.replace();
+  $('input[type="file"]').change(function (e) {
+    var fileName = e.target.files[0].name;
+    $(this).next('.custom-file-label').html(fileName);
+  });
 });
 
 /***/ }),
@@ -39363,10 +39367,10 @@ try {
 
 window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-var meta = document.createElement('meta');
-meta.name = 'author';
-meta.setAttribute('content', 'Sreenath Sivadas');
-document.getElementsByTagName('head')[0].appendChild(meta);
+var a = document.createElement("meta");
+a.name = "author";
+a.setAttribute("content", "Sreenath Sivadas");
+document.getElementsByTagName("head")[0].appendChild(a);
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting

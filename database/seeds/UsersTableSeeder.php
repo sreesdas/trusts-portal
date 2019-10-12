@@ -17,8 +17,9 @@ class UsersTableSeeder extends Seeder
             'email' => 'sreenathsdas@gmail.com',
             'cpf' => '128238',
             'designation' => 'EE',
-            'adminroles' => ['cpf'],
-            'trusts' => ['cpf'],
+            'roles' => [ 'cpf-trustee', 'cpf-admin' ],
+            // 'adminroles' => ['cpf'],
+            // 'trusts' => ['cpf'],
             'password' => bcrypt('sree5633')
         ]);
 
@@ -27,8 +28,9 @@ class UsersTableSeeder extends Seeder
             'email' => 'h_martoliya@ongc.co.in',
             'cpf' => '95962',
             'designation' => 'CM',
-            'adminroles' => ['csss'],
-            'trusts' => ['csss'],
+            'roles' => [ 'csss-trustee', 'csss-admin' ],
+            // 'adminroles' => ['csss'],
+            // 'trusts' => ['csss'],
             'password' => bcrypt('sree5633')
         ]);
     }
