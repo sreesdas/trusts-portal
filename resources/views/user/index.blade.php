@@ -5,7 +5,7 @@
 @endsection
 
 @section('heading')
-    TRUSTS PORTAL
+    ONGC WELFARE TRUSTS PORTAL
 @endsection
 
 @section('content')

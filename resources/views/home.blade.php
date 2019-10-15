@@ -11,7 +11,7 @@
             <a href="{{ Auth::user()->isAdmin('cpf') ? '/cpf/agenda' : '/cpf/meeting' }}" class="card-link">
                 <div class="card">
                     <div class="card-body">
-                        <h3> CPF TRUST </h3> 
+                        <h3> ECPF TRUST </h3> 
                         @if($cpf)
                             <p>{{ $cpf->name }} scheduled to be held on {{ $cpf->date }}, {{ $cpf->time }} </p>
                         @else

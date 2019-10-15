@@ -5,7 +5,7 @@
 @endsection
 
 @section('heading')
-    CPF PORTAL
+    ECPF PORTAL - ADMIN
 @endsection
 
 @section('content')

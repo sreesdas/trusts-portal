@@ -5,7 +5,7 @@
 @endsection
 
 @section('heading')
-    CPF PORTAL
+    ECPF PORTAL
 @endsection
 
 @section('content')
@@ -25,7 +25,10 @@
             @foreach ($agendas as $agenda)
                 <tr>
                     <td> <a href="/cpf/agenda/{{ $agenda->id }}"> {{ $agenda->uid }} </a> </td>
-                    <td> {{ $agenda->subject }} </td>
+                    <td> 
+                        <p class="mb-2" > {{ $agenda->subject }} </p>
+                        @include('partials.cpf.attachment')
+                    </td>
                     <td> {{ $agenda->proposal }} </td>
                     <td> {{ $agenda->date }} </td>
                 </tr>

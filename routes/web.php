@@ -19,7 +19,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('/user', 'UserController');
+Route::resource('/user', 'UserController')->middleware('auth');
 
 Route::post('/cpf/action/{id}/{action}', 'CpfMeetingController@action')->middleware('access:cpf');
 Route::resource('/cpf/agenda', 'CpfAgendaController')->middleware('access:cpf');
@@ -29,3 +29,5 @@ Route::resource('/cpf/archive', 'CpfArchiveController')->middleware('access:cpf'
 
 Route::resource('/csss/agenda', 'CsssAgendaController')->middleware('access:csss');
 Route::resource('/csss/meeting', 'CsssMeetingController')->middleware('access:csss');
+
+Route::resource('/webviewer', 'WebviewerController')->middleware('auth');

@@ -9,7 +9,7 @@
 @endsection
 
 @section('heading')
-    CPF PORTAL
+   ECPF PORTAL
 @endsection
 
 @section('content')
@@ -80,7 +80,10 @@
                 <tr>
                     <td> <input type="checkbox" name="agendas[]" value="{{ $agenda->id }}" > </td>
                     <td> <a href="/cpf/agenda/{{ $agenda->id }}" > {{ $agenda->uid }} </a> </td>
-                    <td> {{ $agenda->subject }} </td>
+                    <td> 
+                        <p class="mb-2" > {{ $agenda->subject }} </p>
+                        @include('partials.cpf.attachment')
+                    </td>
                     <td> {{ $agenda->date }} </td>
                     <td> {{ $agenda->status }} </td>
                 </tr>
