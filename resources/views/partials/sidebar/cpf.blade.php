@@ -18,6 +18,11 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link pl-2" href="/cpf/archive/">
+                        <i data-feather="inbox"></i> <span class="d-none d-md-inline ml-2">HISTORY</span>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link pl-2" href="/user">
                         <i data-feather="users"></i> <span class="d-none d-md-inline ml-2">USERS</span>
                     </a>

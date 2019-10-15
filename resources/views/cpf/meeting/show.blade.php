@@ -46,18 +46,21 @@
                     </div>
                 </div>
 
-                {{-- FOR ADMIN --}}
-                <div class="col-xl-6">
-                    <div class="custom-file">
-                        <input id="file" type="file" class="custom-file-input">
-                        <label for="file" class="custom-file-label">Upload MOM</label>
-                    </div>
-                </div>
-                <div class="col-xl-12">
-                    <button class="btn btn-primary float-right">Upload</button>
-                </div>
-
             </div>
+                <form action="/cpf/archive/{{ $meeting->id }}" method="post" class="form-inline">
+                @csrf 
+                @method('PATCH')
+                    <div class="d-flex">
+                        <div class="custom-file">
+                            <input id="file" type="file" class="custom-file-input" style="width:600px">
+                            <label for="file" class="custom-file-label">Select MOM</label>
+                        </div>
+                    
+                        <button class="btn btn-primary ml-2">Upload</button>
+                        <button type="button" class="btn btn-danger ml-2" onclick="$('.custom-file-label').text('Select MOM')">Remove</button>
+                    </div>
+                    
+                </form>
         </div>
     </div>
 
@@ -76,7 +79,7 @@
             @foreach ($meeting->agendas as $agenda)
                 <tr>
                     <td> <input type="checkbox" name="agendas[]" value="{{ $agenda->id }}" > </td>
-                    <td> {{ $agenda->uid }} </td>
+                    <td> <a href="/cpf/agenda/{{ $agenda->id }}" > {{ $agenda->uid }} </a> </td>
                     <td> {{ $agenda->subject }} </td>
                     <td> {{ $agenda->date }} </td>
                     <td> {{ $agenda->status }} </td>

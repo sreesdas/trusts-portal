@@ -5,7 +5,7 @@
 @endsection
 
 @section('heading')
-    CPF PORTAL - ADMIN
+    CPF PORTAL - MEMBER/TRUSTEE
 @endsection
 
 @section('content')
@@ -17,15 +17,17 @@
                 <th> <input type="checkbox" id="checkbox-select-all"> </th>
                 <th> UID </th>
                 <th> Subject </th>
+                <th> Proposal Type </th>
                 <th> Date </th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($meeting->agendas as $agenda)
+            @foreach ($meeting->agendas->where('is_circulated', true) as $agenda)
                 <tr>
                     <td> <input type="checkbox" name="agendas[]" value="{{ $agenda->id }}" > </td>
-                    <td> {{ $agenda->uid }} </td>
+                    <td> <a href="/cpf/agenda/{{ $agenda->id }}"> {{ $agenda->uid }} </a> </td>
                     <td> {{ $agenda->subject }} </td>
+                    <td> {{ $agenda->proposal }} </td>
                     <td> {{ $agenda->date }} </td>
                 </tr>
             @endforeach

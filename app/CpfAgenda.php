@@ -3,10 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class CpfAgenda extends Model
 {
-    protected $fillable = [ 'uid', 'subject', 'date' ];
+    use SoftDeletes;
+
+    protected $fillable = [ 'uid', 'subject', 'date', 'proposal' ];
 
     public function meetings() {
         return $this->belongsToMany(CpfMeeting::class);

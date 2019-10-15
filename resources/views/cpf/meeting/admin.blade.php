@@ -44,6 +44,21 @@
                             <input type="time" name="time" id="time" value="{{ $meeting->time }}" class="form-control">
                         </div>
                     </div>
+                    <div class="col-xl-12">
+                        <div class="form-group">
+                            <label for="members">Members</label>
+                            {{-- <select multiple name="members[]" id="members" class="form-control">
+                                @foreach (\App\User::all() as $user)
+                                    <option {{ $meeting->users()->find($user->id) == null ? '' : 'selected' }} value="{{ $user->id }}"> {{ $user->name }} ( {{ $user->designation }} ) </option>
+                                @endforeach
+                            </select> --}}
+                            <select multiple="multiple" id="members" name="members[]">
+                                @foreach (\App\User::all() as $user)
+                                    <option {{ $meeting->users()->find($user->id) == null ? '' : 'selected' }} value="{{ $user->id }}"> {{ $user->name }} ( {{ $user->designation }} ) </option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
                 </div>
                 <button class="btn btn-primary">Update</button>
                 @if( $meeting->agendas->count() > 0 && $meeting->agendas->where('status', 'takenup')->count() == 0 )
@@ -67,6 +82,7 @@
                     <th> <input type="checkbox" id="checkbox-select-all"> </th>
                     <th> UID </th>
                     <th> Subject </th>
+                    <th> Proposal </th>
                     <th> Date </th>
                 </tr>
             </thead>
@@ -74,8 +90,9 @@
                 @foreach ($meeting->agendas->where('status', 'takenup') as $agenda)
                     <tr>
                         <td> <input type="checkbox" name="agendas[]" value="{{ $agenda->id }}" > </td>
-                        <td> {{ $agenda->uid }} </td>
+                        <td> <a href="/cpf/agenda/{{ $agenda->id}}/edit" > {{ $agenda->uid }} </td>
                         <td> {{ $agenda->subject }} </td>
+                        <td> {{ $agenda->proposal }} </td>
                         <td> {{ $agenda->date }} </td>
                     </tr>
                 @endforeach
@@ -84,6 +101,7 @@
         <button formaction="/cpf/action/{{ $meeting->id }}/deliberated" class="btn btn-outline-success">Deliberate</button>
         <button formaction="/cpf/action/{{ $meeting->id }}/withdrawn" class="btn btn-outline-danger">Withdraw</button>
         <button  formaction="/cpf/action/{{ $meeting->id }}/carried" class="btn btn-outline-primary">Carry Forward</button>
+        <button  formaction="/cpf/action/{{ $meeting->id }}/circulate" class="btn btn-primary float-right">Circulate</button>
     </form>
 
 @endsection

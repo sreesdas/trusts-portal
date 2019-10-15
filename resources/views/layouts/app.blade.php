@@ -44,7 +44,7 @@
                                     <a class="dropdown-item" href="#">Settings</a>
                                     <a class="dropdown-item" href="#">Profile</a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Logout</a>
+                                    <button onclick="$('#form-logout').submit()" class="dropdown-item" href="#">Logout</button>
                                 </div>
                             </li>
                         </ul>

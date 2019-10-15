@@ -20,10 +20,12 @@ class CreateCpfAgendasTable extends Migration
             $table->string('subject');
             $table->date('date');
             $table->enum('status', [ 'created', 'takenup', 'deliberated', 'withdrawn', 'carried' ] )->default('created');
-
+            $table->enum('proposal', ['confirmation', 'information and further direction', 'approval', 'ratification/appraisal', 'others' ] )->nullable();
             $table->string('agenda_url')->nullable();
             $table->string('presentation_url')->nullable();
+            $table->boolean('is_circulated')->default(false);
 
+            $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
         });
     }

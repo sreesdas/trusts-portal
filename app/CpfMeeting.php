@@ -11,4 +11,8 @@ class CpfMeeting extends Model
     public function agendas() {
         return $this->belongsToMany(CpfAgenda::class);
     }
+
+    public function users() {
+        return $this->belongsToMany(User::class);
+    }
 }

@@ -36,6 +36,18 @@
                             <input type="text" name="designation" class="form-control" value="{{ $user->designation }}">
                         </div>
                     </div>
+                    <div class="col-xl-6">
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" name="email" class="form-control" value="{{ $user->email }}">
+                        </div>
+                    </div>
+                    <div class="col-xl-6">
+                        <div class="form-group">
+                            <label for="mobile">Mobile</label>
+                            <input type="text" name="mobile" class="form-control" value="{{ $user->mobile }}">
+                        </div>
+                    </div>
                     @if( Auth::user()->isAdmin('cpf') )
                         <div class="col-xl-12">
                             <div class="form-group form-check form-check-inline">

@@ -17,12 +17,26 @@ class UserController extends Controller
 
     public function create()
     {
-        //
+        return view('user.create');
     }
 
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'cpf' => 'required',
+            'name' => 'required',
+            'password' => 'required',
+            'designation' => 'nullable',
+            'email' => 'required',
+            'mobile' => 'required',
+        ]);
+
+        $user = User::create($validated);
+        $user->roles = ['member'];
+        $user->password = bcrypt($request->password);
+        $user->save();
+
+        return redirect('/user')->with('success', "User $user->name created");
     }
 
     public function show(User $user)

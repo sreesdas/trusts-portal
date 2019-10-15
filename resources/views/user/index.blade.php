@@ -13,7 +13,7 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="/user">Users</a></li>
-          <li class="breadcrumb-item active" aria-current="page">View</li>
+          <li class="breadcrumb-item active" aria-current="page">All</li>
         </ol>
     </nav>
     
@@ -43,5 +43,9 @@
             @endforeach
         </tbody>
     </table>
+
+    @if( Auth::user()->isAdmin('cpf') || Auth::user()->isAdmin('csss') )
+        <a href="/user/create" class="btn btn-primary">Create User</a>
+    @endif
 
 @endsection

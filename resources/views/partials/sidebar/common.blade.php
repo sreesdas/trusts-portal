@@ -13,6 +13,11 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link pl-2" href="/cpf/archive/">
+                        <i data-feather="inbox"></i> <span class="d-none d-md-inline ml-2">HISTORY</span>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link pl-2" href="#" onclick="$('#form-logout').submit()">
                         <i data-feather="log-out"></i> <span class="d-none d-md-inline ml-2">LOGOUT</span>
                     </a>

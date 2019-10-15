@@ -25,6 +25,7 @@ Route::post('/cpf/action/{id}/{action}', 'CpfMeetingController@action')->middlew
 Route::resource('/cpf/agenda', 'CpfAgendaController')->middleware('access:cpf');
 Route::get('/cpf/meeting/admin', 'CpfMeetingController@admin')->middleware('access:cpf');
 Route::resource('/cpf/meeting', 'CpfMeetingController')->middleware('access:cpf');
+Route::resource('/cpf/archive', 'CpfArchiveController')->middleware('access:cpf');
 
 Route::resource('/csss/agenda', 'CsssAgendaController')->middleware('access:csss');
 Route::resource('/csss/meeting', 'CsssMeetingController')->middleware('access:csss');

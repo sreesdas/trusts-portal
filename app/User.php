@@ -11,7 +11,7 @@ class User extends Authenticatable
     use Notifiable;
 
     protected $fillable = [
-        'name', 'cpf', 'email', 'password', 'designation', 'roles', 
+        'name', 'cpf', 'email', 'password', 'designation', 'roles', 'mobile'
     ];
 
     protected $hidden = [
@@ -26,10 +26,17 @@ class User extends Authenticatable
         'roles' => 'array',
     ];
 
+    public function meetings() {
+        return $this->belongsToMany(CpfMeeting::class);
+    }
+
     public function isTrustee($trust) {
         
         if( $this->roles ) {
             if(in_array($trust . "-trustee", $this->roles)) {
+                return true;
+            }
+            if(in_array('member', $this->roles)) {
                 return true;
             }
         }
