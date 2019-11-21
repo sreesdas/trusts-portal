@@ -45,6 +45,7 @@
             </tbody>
         </table>
         <button class="btn btn-success">Add to Meeting</button>
+        <a class="btn btn-outline-success" href="/cpf/meeting/admin" >View Meeting</a>
         <a href="/cpf/agenda/create" class="btn btn-primary float-right">Create Agenda</a>
     </form>
 

@@ -64,39 +64,51 @@
                             <textarea name="subject" id="subject" rows="3" class="form-control"> {{ $agenda->subject }} </textarea>
                         </div>
                     </div>
-                    <div class="col-xl-6 form-group">
+                    <div class="col-xl-8 form-group">
                         <div class="custom-file">
                             <input id="agenda" type="file" name="agenda" class="custom-file-input">
                             <label for="agenda" class="custom-file-label">Upload Agenda</label>
                         </div>
                     </div>
-                    <div class="col-xl-6 form-group">
+                    <div class="col-xl-4">
+                        <button class="btn btn-outline-danger">Remove</button>
+                    </div>
+                    <div class="col-xl-8 form-group">
                         <div class="custom-file">
                             <input id="brief" type="file" name="brief" class="custom-file-input">
                             <label for="brief" class="custom-file-label">Upload Brief</label>
                         </div>
                     </div>
-                    <div class="col-xl-6 form-group">
+                    <div class="col-xl-4">
+                        <button class="btn btn-outline-danger">Remove</button>
+                    </div>
+                    <div class="col-xl-8 form-group">
                         <div class="custom-file">
                             <input id="notesheet" type="file" name="notesheet" class="custom-file-input">
                             <label for="notesheet" class="custom-file-label">Upload Notesheet</label>
                         </div>
                     </div>
-                    <div class="col-xl-6 form-group">
+                    <div class="col-xl-4">
+                        <button class="btn btn-outline-danger">Remove</button>
+                    </div>
+                    <div class="col-xl-8 form-group">
                         <div class="custom-file">
                             <input id="presentation" type="file" name="presentation" class="custom-file-input">
                             <label for="presentation" class="custom-file-label">Upload Presentation</label>
                         </div>
                     </div>
+                    <div class="col-xl-4">
+                        <button class="btn btn-outline-danger">Remove</button>
+                    </div>
                     <div class="col-xl-12">
-                        @if( $agenda->status == 'takenup' || $agenda->status == 'created' )
+                        @if( $agenda->isEditable() )
                             <button class="btn btn-primary">Update</button>
                             <button type="button" class="btn btn-danger" onclick="$('#form-agenda-delete').submit()">Delete</button>
                         @endif
                     </div>
                 </div>
             </form>
-            @if( $agenda->status == 'takenup' || $agenda->status == 'created' )
+            @if( $agenda->isEditable() )
                 <form id="form-agenda-delete" action="/cpf/agenda/{{ $agenda->id }}" method="post">
                 @csrf 
                 @method('DELETE')

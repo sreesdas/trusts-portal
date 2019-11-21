@@ -1,7 +1,11 @@
 @extends('layouts.app')
 
 @section('sidebar')
-    @include('partials.sidebar.cpf')
+    @if(Auth::user()->isAdmin('cpf'))
+        @include('partials.sidebar.cpf')
+    @else
+        @include('partials.sidebar.common')
+    @endif
 @endsection
 
 @section('heading')
@@ -61,6 +65,10 @@
                         </div>
                     </div>
                 </div>
+
+                @if(Auth::user()->isAdmin('cpf') && $agenda->isEditable())
+                    <a href="/cpf/agenda/{{ $agenda->id }}/edit" class="btn btn-primary">Edit</a>
+                @endif
         </div>
     </div>
 

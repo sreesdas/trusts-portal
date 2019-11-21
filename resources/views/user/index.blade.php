@@ -33,18 +33,20 @@
                     <td> {{ $user->name }}</td>
                     <td> {{ $user->email }}</td>
                     <td>
-                        <ul>
-                            @foreach ($user->roles as $role)
-                                <li> {{ $role }} </li>
-                            @endforeach
-                        </ul>
+                        @if($user->roles)
+                            <ul>
+                                @foreach ($user->roles as $role)
+                                    <li> {{ $role }} </li>
+                                @endforeach
+                            </ul>
+                        @endif
                     </td>
                 </tr>
             @endforeach
         </tbody>
     </table>
 
-    @if( Auth::user()->isAdmin('cpf') || Auth::user()->isAdmin('csss') )
+    @if( Auth::user()->isAdminOfAny() )
         <a href="/user/create" class="btn btn-primary">Create User</a>
     @endif
 

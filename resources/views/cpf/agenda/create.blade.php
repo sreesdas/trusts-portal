@@ -20,7 +20,7 @@
 
     <div class="card">
         <div class="card-body">
-            <h3 class="card-title text-primary">Create Cpf Agenda</h3>
+            <h3 class="card-title text-primary">Create ECPF Agenda</h3>
 
             <form action="/cpf/agenda" method="post" enctype="multipart/form-data">
             @csrf
@@ -56,7 +56,7 @@
                         </div>
                     </div>
                     <div class="col-xl-6 form-group">
-                        <div class="custom-file">
+                        <div class="">
                             <input id="agenda" type="file" name="agenda" class="custom-file-input">
                             <label for="agenda" class="custom-file-label">Upload Agenda</label>
                         </div>
@@ -80,7 +80,7 @@
                         </div>
                     </div>
                     <div class="col-xl-12">
-                        <button class="btn btn-primary">Create</button>
+                        <button class="btn btn-primary">Create Agenda</button>
                     </div>
                 </div>
             </form>

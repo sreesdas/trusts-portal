@@ -14,12 +14,14 @@ class CpfMeetingController extends Controller
 
     public function __construct()
     {
+        $this->middleware('auth');
+        $this->middleware('admin:cpf', ['except' => ['index', 'show', 'mom'] ]);
         $this->meeting = CpfMeeting::with('agendas')->where('status', 'scheduled')->get()->last();
     }
 
     public function index()
     {
-        if(!$this->meeting) abort(500, 'Cpf meeting doesn\'t exist');
+        if(!$this->meeting) abort(500, 'ECPF meeting doesn\'t exist');
 
         if( $this->meeting->users()->find(Auth::user()->id) == null ) {
             return redirect('/home')->with("error", "You are not authorized to view this meeting");
@@ -32,7 +34,7 @@ class CpfMeetingController extends Controller
 
     public function admin() {
 
-        if(!$this->meeting) abort(500, 'Cpf meeting doesn\'t exist');
+        if(!$this->meeting) abort(500, 'ECPF meeting doesn\'t exist');
 
         return view('cpf.meeting.admin')->with([
             'meeting' => $this->meeting
@@ -127,5 +129,16 @@ class CpfMeetingController extends Controller
 
         $this->meeting->agendas()->syncWithoutDetaching($request->agendas, ['status' => $action] );
         return redirect('/cpf/meeting/admin')->with('success', count($request->agendas) . " agendas has been $action" );
+    }
+
+    public function mom(CpfMeeting $meeting) {
+        
+        if($meeting->mom_url) {
+            return view('webviewer.index')->with([
+                'url' => "/storage/" . $meeting->mom_url
+            ]);
+        } else {
+            abort(404, 'MOM Not found');
+        }
     }
 }

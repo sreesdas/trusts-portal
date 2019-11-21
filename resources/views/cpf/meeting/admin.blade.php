@@ -26,19 +26,19 @@
             @csrf 
             @method('PATCH')
                 <div class="row">
-                    <div class="col-xl-6">
+                    <div class="col-xl-4">
                         <div class="form-group">
                             <label for="name">Name</label>
                             <input type="text" name="name" id="name" value="{{ $meeting->name }}" class="form-control">
                         </div>
                     </div>
-                    <div class="col-xl-6">
+                    <div class="col-xl-4">
                         <div class="form-group">
                             <label for="date">Date</label>
                             <input type="date" name="date" id="date" value="{{ $meeting->date }}" class="form-control">
                         </div>
                     </div>
-                    <div class="col-xl-6">
+                    <div class="col-xl-4">
                         <div class="form-group">
                             <label for="time">Time</label>
                             <input type="time" name="time" id="time" value="{{ $meeting->time }}" class="form-control">

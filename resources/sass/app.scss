@@ -8,10 +8,18 @@
 @import '~bootstrap/scss/bootstrap';
 @import 'multi-select.dist.css';
 
+// Full calendar
+@import '~@fullcalendar/core/main.css';
+@import '~@fullcalendar/daygrid/main.css';
+
 aside .nav-item a:hover {
     background: #0d71c38a;
 }
 
 a.card-link:hover {
     text-decoration: none;
+}
+
+.ms-container {
+    width: 550px;
 }

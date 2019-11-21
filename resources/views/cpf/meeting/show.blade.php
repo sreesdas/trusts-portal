@@ -47,20 +47,24 @@
                 </div>
 
             </div>
-                <form action="/cpf/archive/{{ $meeting->id }}" method="post" class="form-inline">
+            
+            @if(Auth::user()->isAdmin('cpf'))
+                <form action="/cpf/archive/{{ $meeting->id }}" method="post" class="form-inline" enctype="multipart/form-data">
                 @csrf 
                 @method('PATCH')
                     <div class="d-flex">
-                        <div class="custom-file">
-                            <input id="file" type="file" class="custom-file-input" style="width:600px">
-                            <label for="file" class="custom-file-label">Select MOM</label>
+                        <div class="">
+                            <input id="file" name="mom" type="file" class="custom-file-input" style="width:600px">
+                            <label for="file" class="custom-file-label"> {{ $meeting->mom_url ?? 'Select MOM' }} </label>
                         </div>
                     
                         <button class="btn btn-primary ml-2">Upload</button>
+                        <a href="/cpf/meeting/{{ $meeting->id }}/mom" class="btn btn-outline-primary ml-2">View</a>
                         <button type="button" class="btn btn-danger ml-2" onclick="$('.custom-file-label').text('Select MOM')">Remove</button>
                     </div>
-                    
                 </form>
+            @endif
+
         </div>
     </div>
 

@@ -31,11 +31,16 @@ class User extends Authenticatable
     }
 
     public function isTrustee($trust) {
-        
         if( $this->roles ) {
             if(in_array($trust . "-trustee", $this->roles)) {
                 return true;
             }
+        }
+        return false;
+    }
+
+    public function isMember() {
+        if( $this->roles ) {
             if(in_array('member', $this->roles)) {
                 return true;
             }
@@ -44,11 +49,23 @@ class User extends Authenticatable
     }
 
     public function isAdmin($trust) {
-
         if( $this->roles ) {
-            if(in_array($trust . "-admin" , $this->roles)) {
+            if(in_array($trust . '-admin', $this->roles)) {
                 return true;
             }
+        }
+        return false;
+    }
+
+    public function isAdminOfAny() {
+        $roles = ['cpf-admin', 'csss-admin'];
+        if( $this->roles ) {
+            foreach ($roles as $role) {
+                if(in_array($role , $this->roles)) {
+                    return true;
+                }
+            }
+            return false;
         }
         return false;
     }

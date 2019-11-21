@@ -74,8 +74,13 @@
                     @endif
                     <div class="col-xl-12">
                         <button class="btn btn-primary">Update</button>
+                        <button type="button" onclick="$('#form-delete').submit()" class="btn btn-danger">Delete</button>
                     </div>
                 </div>
+            </form>
+            <form id="form-delete" action="/user/{{ $user->id }}" method="post">
+            @csrf 
+            @method('DELETE')
             </form>
         </div>
     </div>

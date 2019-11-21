@@ -14,4 +14,8 @@ class CpfAgenda extends Model
     public function meetings() {
         return $this->belongsToMany(CpfMeeting::class);
     }
+
+    public function isEditable() {
+        return $this->status == 'takenup' || $this->status == 'created';
+    }
 }

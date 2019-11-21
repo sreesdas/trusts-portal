@@ -20,9 +20,12 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('/user', 'UserController')->middleware('auth');
+Route::resource('/cpf/disha', 'CpfDishaController')->middleware('access:cpf');
 
 Route::post('/cpf/action/{id}/{action}', 'CpfMeetingController@action')->middleware('access:cpf');
 Route::resource('/cpf/agenda', 'CpfAgendaController')->middleware('access:cpf');
+
+Route::get('/cpf/meeting/{meeting}/mom', 'CpfMeetingController@mom')->middleware('access:cpf');
 Route::get('/cpf/meeting/admin', 'CpfMeetingController@admin')->middleware('access:cpf');
 Route::resource('/cpf/meeting', 'CpfMeetingController')->middleware('access:cpf');
 Route::resource('/cpf/archive', 'CpfArchiveController')->middleware('access:cpf');

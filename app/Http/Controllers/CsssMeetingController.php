@@ -14,7 +14,7 @@ class CsssMeetingController extends Controller
      */
     public function index()
     {
-        //
+        return 'Under development';
     }
 
     /**

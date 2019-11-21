@@ -3,11 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\CpfAgenda;
+use Carbon\Carbon;
 use App\CpfMeeting;
 use Illuminate\Http\Request;
 
 class CpfArchiveController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     public function index()
     {
@@ -45,7 +51,20 @@ class CpfArchiveController extends Controller
     // UPDATE MOM
     public function update(Request $request, $id)
     {
-        return $request;
+        $request->validate([
+            'mom' => 'required'
+        ]);
+
+        $meeting = CpfMeeting::findOrFail($id);
+        
+        if( $request->hasFile('mom') ){
+            $mom_name = "mom_" . Carbon::now()->format('YmdHi') . "_" . $request->file('mom')->getClientOriginalName();
+            $mom_path = $request->file('mom')->storeAs("public/uploads/cpf/mom/$meeting->id", $mom_name);
+            $meeting->mom_url = explode( "/", $mom_path, 2 )[1];
+        }
+
+        $meeting->save();
+        return redirect()->back()->with('success', 'mom uploaded');
     }
 
     /**

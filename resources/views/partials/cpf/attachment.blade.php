@@ -5,7 +5,7 @@
 @endif
 
 @if($agenda->brief_url) 
-    <a href="/webviewer/?portal=cpf&id={{ $agenda->id }}&document=brief" class="btn btn-sm btn-outline-primary" target="_blank">Presentation</a>
+    <a href="/webviewer/?portal=cpf&id={{ $agenda->id }}&document=brief" class="btn btn-sm btn-outline-primary" target="_blank">Brief</a>
 @else 
     <a href="#" class="btn btn-sm btn-light disabled">Brief</a>
 @endif

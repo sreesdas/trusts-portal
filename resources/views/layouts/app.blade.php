@@ -12,14 +12,14 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ mix('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 
 </head>
 <body>
@@ -32,6 +32,7 @@
                 <main class="col bg-faded px-0">
                     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
                         <a class="navbar-brand" href="#">
+                            <i data-feather="menu" class="mr-2" onclick="$('aside').toggle()"></i>
                             @yield('heading', 'TRUSTS PORTAL')
                         </a>
                         @auth

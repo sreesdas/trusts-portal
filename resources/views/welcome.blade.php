@@ -57,7 +57,7 @@
             }
 
             .title {
-                font-size: 84px;
+                font-size: 64px;
             }
 
             .links > a {
@@ -93,7 +93,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Trusts Portal
+                    ONGC Welfare Trusts Portal
                 </div>
                 <a class="btn btn-outline-primary" href="/login">Login to Portal</a>
             </div>

@@ -1,6 +1,8 @@
 require('./bootstrap');
 const feather = require('feather-icons');
 
+require('./calendar');
+
 require('./jquery.multi-select');
 
 $(function(){

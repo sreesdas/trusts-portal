@@ -32,7 +32,7 @@ class UserController extends Controller
         ]);
 
         $user = User::create($validated);
-        $user->roles = ['member'];
+        // $user->roles = ['member'];
         $user->password = bcrypt($request->password);
         $user->save();
 
@@ -41,7 +41,16 @@ class UserController extends Controller
 
     public function show(User $user)
     {
-        return view('user.show', compact('user'));
+        if($user->id == Auth::user()->id) {
+            return view('user.show', compact('user'));
+        } else {
+            if( Auth::user()->isAdminOfAny() ){
+                return view('user.show', compact('user'));
+            } else {
+                return redirect('/user')->with('error', "Can't view other user's details");
+            }
+        }
+        
     }
 
     public function edit($id)
@@ -77,6 +86,9 @@ class UserController extends Controller
 
     public function destroy($id)
     {
-        //
+        $user = User::findOrFail($id);
+        $user->delete();
+
+        return redirect('/user')->with('success', "User $user->name deleted!");
     }
 }
